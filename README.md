@@ -25,7 +25,7 @@ Edit server.py and fill in SSH host and login.
     "full/path/to/mcp/server.py"
   ],
   "env": {},
-  "active": false
+  "active": true
 }
 ```
 
