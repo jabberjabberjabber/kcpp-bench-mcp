@@ -6,7 +6,7 @@ This server benchmarks LLMs. It requires the path for the gguf model weights.
 
 Usage:
 1. analyze model and system - Connect to remote system
-2. run benchmark - Run complete optimization for a model
+2. run benchmark - Run the benchmark
 
 All operations happen on the remote system via SSH - no local model files needed.
 """
@@ -239,7 +239,6 @@ class BenchmarkOptimizer:
 
         other_args = other_args or [
             "--usecublas",
-            "rowsplit",
             "--multiuser",
             "--flashattention",
         ]
@@ -267,7 +266,7 @@ class BenchmarkOptimizer:
         ] + other_args
 
         base_command = " ".join(cmd_parts)
-        command = f"cd /mnt/Orlando/gguf && {base_command}"
+        command = f"{base_command}"
 
         try:
             # Execute command
@@ -426,7 +425,7 @@ async def analyze_model_and_system(model_path: str) -> Dict[str, Any]:
         Compute the size of a layer by using the model weights size leaving 20% for context.
     
     Args:
-        model_path (str): the path of huggingface URL to a set of gguf model weights.
+        model_path (str): the path of the model or huggingface URL to a set of gguf model weights.
     """
         
     try:
