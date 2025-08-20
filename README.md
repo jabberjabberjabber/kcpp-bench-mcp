@@ -2,7 +2,7 @@
 
 ```
 uv sync
-uv install fastmcp
+uv add fastmcp
 ```
 
 Edit server.py and fill in SSH host and login.
